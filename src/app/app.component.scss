@@ -1,0 +1,14 @@
+h1{
+  text-align: center;
+}
+.tabs {
+  display: table;
+  position: relative;
+  min-width: 600px;
+  margin: auto;
+  .tab {
+    display: table-cell;
+    text-align: center;
+  }
+}
+
