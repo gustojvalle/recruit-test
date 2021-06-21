@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-leader-board',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leader-board.component.scss']
 })
 export class LeaderBoardComponent implements OnInit {
-
-  constructor() { }
-
+  emojiVotes: {emoji: string, votes: number}[] = [];
+  constructor(private apiService: ApiService) { }
+  
+  async loadVotes() {
+    this.emojiVotes = await this.apiService.getVotes();
+  }
   ngOnInit(): void {
-    // TODO need to get the leaderboard from this endpoint - https://mocki.io/v1/520a98cf-d986-4e55-b7c8-bf005a772342
+    this.loadVotes();
   }
 
 }

@@ -1,10 +1,10 @@
 <h1><a routerLink="/">Emoji App</a><br>💁👌🎍😍</h1>
 <div class="tabs">
+  <a class="tab" routerLink="/">Home</a>
   <a class="tab" routerLink="/leaderboard">Leaderboard</a>
-  <a class="tab" routerLink="/mailing-list">Mailing List</a>
   <a class="tab" routerLink="/about-us">About Us</a>
 </div>
+<div class="section">
 <router-outlet></router-outlet>
-<br>
-<br>
-<span *ngFor="let emoji of allEmojis">{{emoji}}</span>
+</div>
+
