@@ -9,12 +9,11 @@ import { ApiService } from '../api.service';
 export class LeaderBoardComponent implements OnInit {
   emojiVotes: {emoji: string, votes: number}[] = [];
   constructor(private apiService: ApiService) { }
-  
-  async loadVotes() {
+
+  async loadVotes(): Promise<void> {
     this.emojiVotes = await this.apiService.getVotes();
   }
   ngOnInit(): void {
     this.loadVotes();
   }
-
 }

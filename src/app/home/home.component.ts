@@ -15,25 +15,25 @@ export class HomeComponent implements OnInit {
   emojiArray: string[] = [];
 
   ngOnInit(): void {
-    this.emojiArray = this.parseEmojis(ALL_EMOJIS, " ");
+    this.emojiArray = this.parseEmojis(ALL_EMOJIS, ' ');
   }
 
-  async emojiClicked(emoji: string) {
+  async emojiClicked(emoji: string): Promise<void> {
     await this.apiService.submitVote(emoji);
-    alert("Your vote has been submitted!");
+    alert('Your vote has been submitted!');
   }
-  
+
   parseEmojis(emojiString: string, delimiter: string) : string[] {
     let innerParse: ((e: string, d: string) => string[])|null = null;
     innerParse = (e: string, d: string) => {
       const split = emojiString.split(d);
-      const returnVal : string[] = [];
-      for (let emoji of split) {
-        if (emoji.length == 1) {
+      const returnVal: string[] = [];
+      for (const emoji of split) {
+        if (emoji.length === 1) {
           returnVal.push(emoji);
         } else {
           try {
-            returnVal.push(...(<(e: string, d: string) => string[]>innerParse)(emoji, "\t"));
+            returnVal.push(...( <(e: string, d: string) => string[]> innerParse)(emoji, '\t'));
           } catch (e) {
             console.error(e);
           }
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
       }
       return returnVal;
     };
-    
+
     return innerParse(emojiString, delimiter);
   }
 }
