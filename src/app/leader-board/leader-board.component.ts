@@ -7,11 +7,13 @@ import { ApiService } from '../api.service';
   styleUrls: ['./leader-board.component.scss']
 })
 export class LeaderBoardComponent implements OnInit {
-  emojiVotes: {emoji: string, votes: number}[] = [];
+  emojiVotes: { emoji: string, votes: number }[] = [];
   constructor(private apiService: ApiService) { }
 
   async loadVotes(): Promise<void> {
     this.emojiVotes = await this.apiService.getVotes();
+    this.emojiVotes.sort((a, b) => b.votes - a.votes)
+    console.log(this.emojiVotes)
   }
   ngOnInit(): void {
     this.loadVotes();

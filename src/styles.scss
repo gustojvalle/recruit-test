@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+*, *::after, *::before{
+  margin:0; 
+  padding:0;
+}
 
 body {
     width: 1000px;
     height: 90vh;
     background-color: lightsalmon;
+}
+li{
+  list-style-type:none ;
 }
